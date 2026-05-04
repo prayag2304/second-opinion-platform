@@ -1,6 +1,0 @@
-services:
-  - type: web
-    name: backend
-    rootDir: PrayagHuddarProject/backend
-    buildCommand: chmod +x mvnw && ./mvnw clean install
-    startCommand: java -jar target/*.jar
