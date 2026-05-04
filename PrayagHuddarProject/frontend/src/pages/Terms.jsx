@@ -84,8 +84,8 @@ const Terms = () => {
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <p className="text-gray-600">
                     <strong>Email:</strong> legal@secondopinion.com<br />
-                    <strong>Phone:</strong> +1 (555) 123-4567<br />
-                    <strong>Address:</strong> 123 Medical Center Dr, Suite 100, Healthcare City, HC 12345
+                    <strong>Phone:</strong> +91 9561146009<br />
+                    <strong>Address:</strong> 123 Medical Center Healthcare City, 425201
                   </p>
                 </div>
               </div>

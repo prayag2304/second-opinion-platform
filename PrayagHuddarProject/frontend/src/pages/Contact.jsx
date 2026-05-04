@@ -90,7 +90,7 @@ const Contact = () => {
     {
       title: 'Phone Support',
       description: 'Call us for immediate assistance',
-      contact: '+1 (555) 123-4567',
+      contact: '+91 9561146009',
       icon: PhoneIcon,
       color: 'purple',
       availability: '9 AM - 6 PM EST',
@@ -268,8 +268,8 @@ const Contact = () => {
                         </div>
                         <div>
                           <h4 className="font-semibold text-gray-900">Phone</h4>
-                          <p className="text-gray-600">+1 (555) 123-4567</p>
-                          <p className="text-gray-600">+1 (555) 987-6543</p>
+                          <p className="text-gray-600">+91 9561146009</p>
+                          <p className="text-gray-600">+91 8459540172</p>
                         </div>
                       </div>
 
@@ -281,8 +281,8 @@ const Contact = () => {
                           <h4 className="font-semibold text-gray-900">Address</h4>
                           <p className="text-gray-600">
                             123 Medical Center Drive<br />
-                            Healthcare City, HC 12345<br />
-                            United States
+                            Healthcare City, 425201<br />
+                            India
                           </p>
                         </div>
                       </div>

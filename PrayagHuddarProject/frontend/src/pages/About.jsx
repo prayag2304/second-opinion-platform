@@ -204,9 +204,9 @@ const About = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="text-center group animate-fade-in">
                 <div className="w-24 h-24 bg-gradient-to-br from-primary-500 to-primary-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold group-hover:scale-110 transition-transform duration-300 shadow-beautiful">
-                  VR
+                  RG
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Vaibhavsing Rajput</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Rohit Gaikwad</h3>
                 <p className="text-primary-600 mb-3 font-medium">Team Member</p>
                 <p className="text-gray-600 leading-relaxed">
                   Contributing to the development and success of Second Opinion platform with innovative solutions.
@@ -214,9 +214,9 @@ const About = () => {
               </div>
               <div className="text-center group animate-fade-in" style={{ animationDelay: '0.1s' }}>
                 <div className="w-24 h-24 bg-gradient-to-br from-primary-500 to-primary-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold group-hover:scale-110 transition-transform duration-300 shadow-beautiful">
-                  YS
+                  PH
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Yash Somani</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Prayag Huddar</h3>
                 <p className="text-primary-600 mb-3 font-medium">Team Member</p>
                 <p className="text-gray-600 leading-relaxed">
                   Dedicated to creating seamless user experiences and robust healthcare technology solutions.
@@ -224,9 +224,9 @@ const About = () => {
               </div>
               <div className="text-center group animate-fade-in" style={{ animationDelay: '0.2s' }}>
                 <div className="w-24 h-24 bg-gradient-to-br from-primary-500 to-primary-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold group-hover:scale-110 transition-transform duration-300 shadow-beautiful">
-                  SK
+                  PM
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Saurabh Kasture</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Paras Mahajan</h3>
                 <p className="text-primary-600 mb-3 font-medium">Team Member</p>
                 <p className="text-gray-600 leading-relaxed">
                   Focused on building robust and scalable healthcare technology solutions for better patient care.
@@ -234,9 +234,9 @@ const About = () => {
               </div>
               <div className="text-center group animate-fade-in" style={{ animationDelay: '0.3s' }}>
                 <div className="w-24 h-24 bg-gradient-to-br from-primary-500 to-primary-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold group-hover:scale-110 transition-transform duration-300 shadow-beautiful">
-                  MB
+                  TM
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Mandar Bedi</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Team Member</h3>
                 <p className="text-primary-600 mb-3 font-medium">Team Member</p>
                 <p className="text-gray-600 leading-relaxed">
                   Committed to delivering quality healthcare solutions and ensuring exceptional user satisfaction.
@@ -259,11 +259,11 @@ const About = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div className="text-center animate-fade-in">
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">10,000+</div>
+                <div className="text-4xl md:text-5xl font-bold text-white mb-2">1000+</div>
                 <div className="text-primary-100">Patients Helped</div>
               </div>
               <div className="text-center animate-fade-in" style={{ animationDelay: '0.1s' }}>
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">500+</div>
+                <div className="text-4xl md:text-5xl font-bold text-white mb-2">250+</div>
                 <div className="text-primary-100">Expert Doctors</div>
               </div>
               <div className="text-center animate-fade-in" style={{ animationDelay: '0.2s' }}>

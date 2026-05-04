@@ -113,11 +113,11 @@ const ContactInfo = () => (
     </div>
     <div className="flex items-center space-x-3 text-gray-400 hover:text-primary-400 transition-colors duration-300">
       <PhoneIcon className="w-4 h-4" />
-      <span className="text-sm">+1 (555) 123-4567</span>
+      <span className="text-sm">+91 9561146009</span>
     </div>
     <div className="flex items-center space-x-3 text-gray-400 hover:text-primary-400 transition-colors duration-300">
       <MapPinIcon className="w-4 h-4" />
-      <span className="text-sm">Healthcare City, HC 12345</span>
+      <span className="text-sm">Healthcare City, 425201</span>
     </div>
   </div>
 );
