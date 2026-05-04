@@ -75,7 +75,7 @@ const Landing = () => {
               </div>
 
               <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
-                Get Second Opinion Platform for Patient Healthcare
+                 Second Opinion Platform for Patient Healthcare
               </h1>
               <p className="text-xl md:text-2xl mb-8 opacity-95 max-w-3xl mx-auto animate-slide-up leading-relaxed">
                 Connect with top doctors and specialists for expert advice on your health concerns.
