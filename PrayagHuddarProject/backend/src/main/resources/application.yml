@@ -8,6 +8,7 @@ spring:
     password: ${SPRING_DATASOURCE_PASSWORD:apppassword}
     driver-class-name: com.mysql.cj.jdbc.Driver
   
+  spring:
   jpa:
     hibernate:
       ddl-auto: update
