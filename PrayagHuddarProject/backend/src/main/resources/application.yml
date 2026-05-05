@@ -2,7 +2,6 @@ spring:
   application:
     name: prayag-hudar-backend
   
-  spring:
   datasource:
     url: ${SPRING_DATASOURCE_URL}
     username: ${SPRING_DATASOURCE_USERNAME}
