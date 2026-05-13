@@ -9,6 +9,8 @@ import { queryClient } from './hooks/useQueryConfig';
 import { AuthProvider } from './contexts/AuthContext';
 import ProtectedRoute from './components/Common/ProtectedRoute';
 import LoadingSpinner from './components/Common/LoadingSpinner';
+import PatientCaseForm from './components/Patient/PatientCaseForm';
+import DoctorOpinionDashboard from './components/Doctor/DoctorOpinionDashboard';
 
 // Lazy load pages for better performance
 const Landing = React.lazy(() => import('./pages/Landing'));
@@ -140,6 +142,8 @@ const App = () => {
                     </ProtectedRoute>
                   }
                 />
+
+                <Route path="/patient/case-form" element={<PatientCaseForm />} />
                 <Route
                   path="/patient/applications"
                   element={
@@ -182,14 +186,17 @@ const App = () => {
                 />
 
                 {/* Doctor Routes */}
-                <Route
-                  path="/doctor"
-                  element={
-                    <ProtectedRoute allowedRoles={[USER_ROLES.DOCTOR]}>
-                      <DoctorDashboard />
-                    </ProtectedRoute>
-                  }
-                />
+
+<Route path="/doctor/dashboard" element={<DoctorOpinionDashboard />} />
+
+<Route
+    path="/doctor"
+    element={
+        <ProtectedRoute allowedRoles={[USER_ROLES.DOCTOR]}>
+            <DoctorOpinionDashboard />
+        </ProtectedRoute>
+    }
+/>
                 <Route
                   path="/doctor/profile"
                   element={

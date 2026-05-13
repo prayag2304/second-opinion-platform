@@ -9,8 +9,10 @@ import apiClient from '../../services/apiClient';
 import LoadingSpinner from '../../components/Common/LoadingSpinner';
 import EmptyState from '../../components/Common/EmptyState';
 import { API_ENDPOINTS } from '../../config/api';
+import { useNavigate } from 'react-router-dom';
 
 const PatientApplications = () => {
+  const navigate = useNavigate();
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedApplication, setSelectedApplication] = useState(null);
@@ -21,34 +23,28 @@ const PatientApplications = () => {
   }, []);
 
   const fetchApplications = async () => {
-    try {
-      // Use consultations endpoint instead of applications
-      const response = await apiClient.get(API_ENDPOINTS.CONSULTATIONS.LIST);
-      // Extract data from ApiResponse wrapper
-      const consultationsData = response.data?.data?.content || response.data?.data || response.data || [];
-      // Transform consultations to match application structure
-      const transformedApplications = Array.isArray(consultationsData)
-        ? consultationsData.map(consultation => ({
-          id: consultation.id,
-          doctorName: consultation.doctorName || 'Not Assigned',
-          doctorSpecialty: 'N/A', // Backend doesn't provide specialty in response
-          submittedAt: consultation.createdAt || new Date().toISOString(),
-          status: consultation.status || 'pending',
-          fee: 0, // No fee in consultations
-          description: consultation.description,
-          title: consultation.title,
-          files: consultation.files || [],
-          opinion: consultation.opinion
-        }))
-        : [];
-      setApplications(transformedApplications);
-    } catch (error) {
-      console.error('Failed to fetch consultations:', error);
-      toast.error('Failed to fetch applications');
-    } finally {
-      setLoading(false);
-    }
-  };
+
+  try {
+
+    const response = await fetch(
+      'http://localhost:8080/api/cases'
+    );
+
+    const data = await response.json();
+
+    setApplications(data);
+
+  } catch (error) {
+
+    console.error(error);
+
+    toast.error('Failed to fetch applications');
+
+  } finally {
+
+    setLoading(false);
+  }
+};
 
   const handleViewApplication = async (applicationId) => {
     try {
@@ -84,21 +80,27 @@ const PatientApplications = () => {
     );
   }
 
-  if (applications.length === 0) {
-    return (
-      <DashboardLayout>
-        <EmptyState
-          title="No applications found"
-          description="You have not submitted any applications yet."
-        />
-      </DashboardLayout>
-    );
-  }
 
   return (
     <DashboardLayout>
       <div className="patient-applications">
         <h1>My Applications</h1>
+        <button
+  onClick={() =>
+    navigate('/patient/case-form')
+  }
+  style={{
+    marginBottom: '20px',
+    padding: '10px 20px',
+    backgroundColor: '#2563eb',
+    color: 'white',
+    border: 'none',
+    borderRadius: '6px',
+    cursor: 'pointer'
+  }}
+>
+  Ask New Opinion
+</button>
 
         <div className="card">
           <div className="table-responsive">
@@ -111,41 +113,54 @@ const PatientApplications = () => {
                   <th>Submitted</th>
                   <th>Status</th>
                   <th>Fee</th>
+                  <th>Doctor Opinion</th>
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {applications.map((application) => (
-                  <tr
-                    key={application.id}
-                    className={
-                      application.status === 'cancelled' ? 'cancelled-row' : ''
-                    }
-                  >
-                    <td>#{application.id}</td>
-                    <td>{application.doctorName}</td>
-                    <td>{application.doctorSpecialty}</td>
-                    <td>
-                      {new Date(application.submittedAt).toLocaleDateString()}
-                    </td>
-                    <td>
-                      <StatusBadge status={application.status} />
-                    </td>
-                    <td>
-                      <span className="font-semibold text-gray-600">
-                        Free
-                      </span>
-                    </td>
-                    <td>
-                      <button
-                        onClick={() => handleViewApplication(application.id)}
-                        className="btn btn-primary"
-                      >
-                        View Details
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+
+  <tr key={application.id}>
+
+    <td>#{application.id}</td>
+
+    <td>
+      {application.doctorName || 'Pending'}
+    </td>
+
+    <td>
+      General
+    </td>
+
+    <td>
+      {
+        new Date(
+          application.createdAt
+        ).toLocaleDateString()
+      }
+    </td>
+
+    <td>
+      <StatusBadge status={application.status} />
+    </td>
+
+    <td>
+      Free
+    </td>
+
+    <td>
+
+      {
+        application.status === 'COMPLETED'
+          ? application.doctorOpinion
+          : 'Waiting for doctor opinion'
+      }
+
+    </td>
+
+  </tr>
+
+))}
               </tbody>
             </table>
           </div>
