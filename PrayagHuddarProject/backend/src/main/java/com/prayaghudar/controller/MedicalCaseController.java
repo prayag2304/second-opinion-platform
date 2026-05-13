@@ -55,4 +55,19 @@ public class MedicalCaseController {
 
         return null;
     }
+
+    @PutMapping("/{id}/reset")
+    public MedicalCase resetOpinion(
+            @PathVariable Long id
+    ) {
+
+        MedicalCase medicalCase =
+                repository.findById(id).orElseThrow();
+
+        medicalCase.setDoctorOpinion(null);
+        medicalCase.setDoctorName(null);
+        medicalCase.setStatus("PENDING");
+
+        return repository.save(medicalCase);
+    }
 }

@@ -44,6 +44,20 @@ function DoctorOpinionDashboard() {
         fetchCases();
     };
 
+const deleteOpinion = async (id) => {
+
+    await fetch(
+        `http://localhost:8080/api/cases/${id}/reset`,
+        {
+            method: "PUT"
+        }
+    );
+
+    alert("Opinion Deleted!");
+
+    fetchCases();
+};
+
     const pendingCases = cases.filter(
         (medicalCase) =>
             medicalCase.status === "PENDING"
@@ -132,6 +146,21 @@ function DoctorOpinionDashboard() {
                             {" "}
                             {medicalCase.doctorOpinion}
                         </p>
+
+<button
+    onClick={() => deleteOpinion(medicalCase.id)}
+    style={{
+        marginTop: "10px",
+        padding: "8px 14px",
+        backgroundColor: "red",
+        color: "white",
+        border: "none",
+        borderRadius: "5px",
+        cursor: "pointer"
+    }}
+>
+    Delete Opinion
+</button>
 
                     </div>
 
