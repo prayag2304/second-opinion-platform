@@ -70,4 +70,11 @@ public class MedicalCaseController {
 
         return repository.save(medicalCase);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteCase(
+            @PathVariable Long id
+    ) {
+        repository.deleteById(id);
+    }
 }

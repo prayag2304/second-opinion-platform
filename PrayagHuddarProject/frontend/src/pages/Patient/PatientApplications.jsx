@@ -80,7 +80,19 @@ const PatientApplications = () => {
     );
   }
 
+const deleteApplication = async (id) => {
 
+    await fetch(
+        `http://localhost:8080/api/cases/${id}`,
+        {
+            method: "DELETE"
+        }
+    );
+
+    alert("Application Deleted!");
+
+    fetchApplications();
+};
   return (
     <DashboardLayout>
       <div className="patient-applications">
@@ -156,9 +168,29 @@ const PatientApplications = () => {
           : 'Waiting for doctor opinion'
       }
 
-    </td>
+</td>
 
-  </tr>
+<td>
+
+    <button
+        onClick={() =>
+            deleteApplication(application.id)
+        }
+        style={{
+            backgroundColor: "red",
+            color: "white",
+            border: "none",
+            padding: "6px 12px",
+            borderRadius: "5px",
+            cursor: "pointer"
+        }}
+    >
+        Delete
+    </button>
+
+</td>
+
+</tr>
 
 ))}
               </tbody>
