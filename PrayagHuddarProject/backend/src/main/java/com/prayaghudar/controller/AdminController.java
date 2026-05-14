@@ -25,7 +25,13 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(
+    origins = {
+        "http://localhost:5173",
+        "https://second-opinion-platform.vercel.app",
+        "https://second-opinion-platform-pqfpzlrh5.vercel.app"
+    }
+)
 @RestController
 @RequestMapping("/api/admin")
 @PreAuthorize("hasRole('ADMIN')")
