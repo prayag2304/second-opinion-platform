@@ -14,9 +14,11 @@ import { useNavigate } from 'react-router-dom';
 const PatientApplications = () => {
   const navigate = useNavigate();
   const [applications, setApplications] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [selectedApplication, setSelectedApplication] = useState(null);
-  const [selectedPDF, setSelectedPDF] = useState(null);
+const [loading, setLoading] = useState(true);
+const [selectedApplication, setSelectedApplication] = useState(null);
+const [selectedPDF, setSelectedPDF] = useState(null);
+
+const [showPayment, setShowPayment] = useState(false);
 
   useEffect(() => {
     fetchApplications();
@@ -157,7 +159,7 @@ const deleteApplication = async (id) => {
     </td>
 
     <td>
-      Free
+      499
     </td>
 
     <td>

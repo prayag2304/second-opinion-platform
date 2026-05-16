@@ -1,7 +1,10 @@
 package com.prayaghudar.controller;
 
 import com.prayaghudar.model.MedicalCase;
+import com.prayaghudar.model.Notification;
+
 import com.prayaghudar.repository.MedicalCaseRepository;
+import com.prayaghudar.repository.NotificationRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,14 +18,24 @@ import java.util.Optional;
 public class MedicalCaseController {
 
     @Autowired
-    private MedicalCaseRepository repository;
+private MedicalCaseRepository repository;
+
+@Autowired
+private NotificationRepository notificationRepository;
 
     @PostMapping
-    public MedicalCase createCase(
-            @RequestBody MedicalCase medicalCase) {
+public MedicalCase createCase(
+        @RequestBody MedicalCase medicalCase) {
 
-        return repository.save(medicalCase);
-    }
+    notificationRepository.save(
+            new Notification(
+                    "New patient case received",
+                    "doctor"
+            )
+    );
+
+    return repository.save(medicalCase);
+}
 
     @GetMapping
     public List<MedicalCase> getAllCases() {
@@ -48,9 +61,16 @@ public class MedicalCaseController {
             medicalCase.setDoctorName(
                     updatedCase.getDoctorName());
 
-            medicalCase.setStatus("COMPLETED");
+           medicalCase.setStatus("COMPLETED");
 
-            return repository.save(medicalCase);
+notificationRepository.save(
+        new Notification(
+                "Doctor has responded to your case",
+                "patient"
+        )
+);
+
+return repository.save(medicalCase);
         }
 
         return null;

@@ -14,7 +14,7 @@ const DoctorNotifications = () => {
 
   const fetchNotifications = async () => {
     try {
-      const response = await apiClient.get('/doctor/notifications');
+      const response = await apiClient.get('/api/notifications/doctor');
       setNotifications(response.data);
     } catch (error) {
       toast.error('Failed to fetch notifications');
@@ -36,7 +36,7 @@ const DoctorNotifications = () => {
 
   const handleDelete = async (notificationId) => {
     try {
-      await apiClient.delete(`/doctor/notifications/${notificationId}`);
+      await apiClient.delete(`/api/notifications/${notificationId}`);
       setNotifications(prev => prev.filter(n => n.id !== notificationId));
       toast.success('Notification deleted');
     } catch (error) {
@@ -48,12 +48,40 @@ const DoctorNotifications = () => {
     <DashboardLayout>
       <div className="doctor-notifications">
         <h1>Notifications</h1>
-        <EnhancedNotificationsList 
-          notifications={notifications} 
-          loading={loading}
-          onMarkAsRead={handleMarkAsRead}
-          onDelete={handleDelete}
-        />
+        <div>
+  {notifications.map((notification) => (
+    <div
+  key={notification.id}
+  style={{
+    border: '1px solid #ccc',
+    padding: '12px',
+    marginBottom: '10px',
+    borderRadius: '6px',
+    backgroundColor: '#fff',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  }}
+>
+  <span>🔔 {notification.message}</span>
+
+  <button
+    onClick={() => handleDelete(notification.id)}
+    style={{
+      background: 'red',
+      color: 'white',
+      border: 'none',
+      borderRadius: '50%',
+      width: '25px',
+      height: '25px',
+      cursor: 'pointer'
+    }}
+  >
+    ×
+  </button>
+</div>
+  ))}
+</div>
       </div>
     </DashboardLayout>
   );

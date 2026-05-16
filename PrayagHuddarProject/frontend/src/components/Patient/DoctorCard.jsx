@@ -58,7 +58,7 @@ const DoctorCard = ({ doctor, onSelect }) => {
 
         <div className="doctor-fee">
           <span className="fee-label">Consultation Fee:</span>
-          <span className="fee-amount">${doctor.fee}</span>
+          <span className="fee-amount">₹{doctor.fee}</span>
         </div>
 
         <button className="btn btn-primary btn-select">View Profile</button>

@@ -200,7 +200,7 @@ function DoctorOpinionForm({ id, onSubmit }) {
 
             <br /><br />
 
-            <button
+           <button
                 onClick={() =>
                     onSubmit(
                         id,

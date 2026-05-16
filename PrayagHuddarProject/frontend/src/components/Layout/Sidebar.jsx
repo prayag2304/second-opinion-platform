@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { 
@@ -14,10 +14,26 @@ import {
 } from '@heroicons/react/24/outline';
 
 const Sidebar = () => {
+
+  const [notificationCount, setNotificationCount] = useState(0);
+
   const { user } = useAuth();
 
   if (!user) return null;
+useEffect(() => {
 
+  const endpoint =
+    user.role === 'doctor'
+      ? 'http://localhost:8080/api/notifications/doctor'
+      : 'http://localhost:8080/api/notifications/patient';
+
+  fetch(endpoint)
+    .then(res => res.json())
+    .then(data => {
+      setNotificationCount(data.length);
+    });
+
+}, [user]);
   let links = [];
   if (user.role === 'admin') {
     links = [
@@ -56,7 +72,25 @@ const Sidebar = () => {
             }
           >
             <link.icon className="w-5 h-5 mr-3" />
-            <span>{link.label}</span>
+            <span>
+  {link.label}
+
+  {link.label === 'Notifications' &&
+    notificationCount > 0 && (
+      <span
+        style={{
+          background: 'red',
+          color: 'white',
+          borderRadius: '50%',
+          padding: '2px 8px',
+          marginLeft: '8px',
+          fontSize: '12px'
+        }}
+      >
+        {notificationCount}
+      </span>
+  )}
+</span>
           </NavLink>
         ))}
       </nav>
