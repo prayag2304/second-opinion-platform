@@ -66,7 +66,7 @@ export const getApiBaseUrl = () => {
   const baseUrl = getEnvVar('VITE_API_BASE_URL');
   if (!baseUrl) {
     console.error('VITE_API_BASE_URL is not configured');
-    return 'http://localhost:8080';
+    return 'https://second-opinion-platform-for-patient.up.railway.app';
   }
   return baseUrl;
 };

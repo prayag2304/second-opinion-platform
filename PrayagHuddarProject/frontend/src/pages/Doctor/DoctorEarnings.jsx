@@ -9,19 +9,29 @@ const DoctorEarnings = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchEarnings();
-  }, []);
 
-  const fetchEarnings = async () => {
-    try {
-      const response = await apiClient.get('/doctor/earnings');
-      setEarnings(response.data);
-    } catch (error) {
-      toast.error('Failed to fetch earnings');
-    } finally {
-      setLoading(false);
-    }
-  };
+    fetch("http://localhost:8080/api/cases")
+        .then((res) => res.json())
+        .then((data) => {
+
+            const completedCases = data.filter(
+                (item) => item.status === "COMPLETED"
+            );
+
+            const total = completedCases.length * 499;
+
+            setEarnings({
+                total: total,
+                thisMonth: total
+            });
+
+            setLoading(false);
+
+        });
+
+}, []);
+
+  
 
   if (loading) {
     return (
@@ -41,12 +51,12 @@ const DoctorEarnings = () => {
         <div className="earnings-summary">
           <div className="earnings-card card">
             <h3>Total Earnings</h3>
-            <div className="earnings-amount">${earnings?.total || 0}</div>
+            <div className="earnings-amount">₹{earnings?.total || 0}</div>
           </div>
 
           <div className="earnings-card card">
             <h3>This Month</h3>
-            <div className="earnings-amount">${earnings?.thisMonth || 0}</div>
+            <div className="earnings-amount">₹{earnings?.thisMonth || 0}</div>
           </div>
         </div>
 

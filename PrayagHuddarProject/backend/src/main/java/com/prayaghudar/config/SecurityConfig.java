@@ -68,12 +68,13 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/api/auth/**",
-        "/api/doctors",
-        "/api/cases/**",
-        "/api-docs/**",
-        "/swagger-ui.html",
-        "/swagger-ui/**",
-        "/v3/api-docs/**")
+"/api/doctors",
+"/api/cases/**",
+"/api/notifications/**",
+"/api-docs/**",
+"/swagger-ui.html",
+"/swagger-ui/**",
+"/v3/api-docs/**")
                         .permitAll()
                         .anyRequest().authenticated())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

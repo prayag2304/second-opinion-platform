@@ -15,7 +15,7 @@ const PatientDashboard = () => {
   const [filters, setFilters] = useState({
     specialty: '',
     rating: '',
-    maxFee: 100,
+    maxFee: 1000,
   });
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const PatientDashboard = () => {
         specialty: doctor.profile?.specialty || 'General',
         rating: 4.5, // Default rating (not in backend)
         reviews: 0, // Default reviews (not in backend)
-        fee: 50, // Default fee (not in backend)
+        fee: 499, // Default fee (not in backend)
         bio: doctor.profile?.bio || '',
         phone: doctor.profile?.phone || '',
         ...doctor // Include all other fields
@@ -88,7 +88,7 @@ const PatientDashboard = () => {
         specialty: doctor.profile?.specialty || 'General',
         rating: 4.5, // Default rating (not in backend)
         reviews: 0, // Default reviews (not in backend)
-        fee: 50, // Default fee (not in backend)
+        fee: 499, // Default fee (not in backend)
         bio: doctor.profile?.bio || '',
         phone: doctor.profile?.phone || '',
         licenseNumber: doctor.profile?.licenseNumber || '',
@@ -159,11 +159,11 @@ const PatientDashboard = () => {
             </div>
 
             <div className="form-group">
-              <label className="form-label">Max Fee: ${filters.maxFee}</label>
+              <label className="form-label">Max Fee: ₹{filters.maxFee}</label>
               <input
                 type="range"
                 min="25"
-                max="200"
+                max="1000"
                 value={filters.maxFee}
                 onChange={(e) =>
                   handleFilterChange('maxFee', parseInt(e.target.value))

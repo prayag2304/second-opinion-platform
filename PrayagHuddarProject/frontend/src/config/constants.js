@@ -4,7 +4,7 @@ export const COPYRIGHT = '© 2025 Second Opinion. All rights reserved.';
 
 // API Configuration
 export const API_CONFIG = {
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080',
+  baseURL: import.meta.env.VITE_API_BASE_URL || 'https://second-opinion-platform-for-patient.up.railway.app',
   timeout: 30000, // Increased to match utils/constants.js
   headers: {
     'Content-Type': 'application/json',
